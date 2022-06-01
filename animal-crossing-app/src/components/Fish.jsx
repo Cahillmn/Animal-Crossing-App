@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function AnimalCrossingApp() {
+function Fish() {
 
-    const [villagers, setVillagers] = useState(undefined);
+    const [fishes, setFishes] = useState(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        fetch('https://acnhapi.com/v1a/villagers/')
+        fetch('https://acnhapi.com/v1a/fish/')
 
             .then(response => response.json())
 
             .then(
                 data => {
-                    setVillagers(data);
+                    setFishes(data);
                     setIsLoading(false);
                 },
 
@@ -39,23 +39,21 @@ function AnimalCrossingApp() {
     return (
         <main>
             <div className="row">
+                {fishes.map((fish, id) =>
 
-                {villagers.map((villager, id)=>
-
-                    <section className="row card" key={id} >
-                        <div className="row list">
-                            <img className="icon" src={villager[`icon_uri`]} alt={villager[`file-name`]} />
+                    <section className="row card"key={id} >
+                    <div className="list">
+                            <img className="icon" src={fish[`icon_uri`]} alt={fish[`file-name`]} />
                             <div className="column list-info">
-                                <h2>{villager.name["name-USen"]}</h2>
-                                <Link to={`/villager/${villager.id}`}><button>Villager Info</button></Link>
+                                <h2>{fish.name["name-USen"]}</h2>
+                                <Link to={`/fish/${fish.id}`}><button>Fish Info</button></Link>
                             </div>
-                        </div>
+                    </div>
                     </section>
                 )}
-
             </div>
         </main>
     );
 }
 
-export default AnimalCrossingApp
+export default Fish

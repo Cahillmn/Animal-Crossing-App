@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-function VillagerInfo() {
+function FishInfo() {
 
     const {id} = useParams();
-    const [villagerInfo, setVillagerInfo] = useState(undefined);
+    const [fishInfo, setFishInfo] = useState(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
-    const villagerId = id;
+    const fishId = id;
 
     useEffect((id) => {
-        fetch(`https://acnhapi.com/v1a/villagers/`+ villagerId)
+        fetch(`https://acnhapi.com/v1a/fish/`+ fishId)
 
             .then(response => response.json())
 
             .then(
                 data => {
-                    setVillagerInfo(data);
+                    setFishInfo(data);
                     setIsLoading(false);
                 },
 
@@ -28,7 +28,7 @@ function VillagerInfo() {
             );
 
 
-    }, [villagerId]);
+    }, [fishId]);
 
     if (isLoading) {
         return <p>Loading...</p>
@@ -40,13 +40,13 @@ function VillagerInfo() {
 
     return (
         <main>
-            <div key={villagerInfo.id} className="info">
-                <img src={villagerInfo[`image_uri`]} alt={villagerInfo[`file-name`]} />
+            <div key={fishInfo.id} className="info">
+                <img src={fishInfo[`image_uri`]} alt={fishInfo[`file-name`]} />
                 <div className="info"  >
-                    <p><span>Name:  </span> {villagerInfo.name[`name-USen`]}</p>
-                    <p><span>personality:  </span>  {villagerInfo.personality}</p>
-                    <p><span>Birthday:  </span>  {villagerInfo[`birthday-string`]}</p>
-                    <p><span>Catch Phrase:  </span>  {villagerInfo[`catch-phrase`]}</p>
+                    <p><span>Name:  </span> {fishInfo.name[`name-USen`]}</p>
+                    <p><span>Location:  </span>  {fishInfo.availability.location}</p>
+                    <p><span>Rarity:  </span>  {fishInfo.availability.rarity}</p>
+                    <p><span>Price:  </span>  {fishInfo.price} bells</p>
 
                 </div>
             </div>
@@ -55,4 +55,4 @@ function VillagerInfo() {
     )
 }
 
-export default VillagerInfo
+export default FishInfo
