@@ -4,7 +4,7 @@
   box-sizing:border-box;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  background-color: #1c7c24;
+  background-color: #4ebd57;
 }
 
 .row {
@@ -47,7 +47,7 @@ h1 {
 }
 
 .info p {
-  color: white;
+  color: black;
   text-align: left;
   margin-left: 45%;
 }
