@@ -7,6 +7,11 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Fish from './components/Fish';
 import FishInfo from './components/FishInfo';
+import Bugs from './components/Bugs';
+import BugsInfo from './components/BugsInfo';
+import SeaCreatures from './components/SeaCreatures';
+import SeaCreaturesInfo from './components/SeaCreaturesInfo';
+
 import Banner from './components/Banner';
 import Footer from './components/Footer';
 
@@ -15,7 +20,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Animal Crossing New Horizons</h1>
@@ -32,7 +37,7 @@ const Characters = () => {
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Animal Crossing Villagers!</h1>
@@ -48,7 +53,7 @@ const CharactersInfoPage = () => {
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Villager Details</h1>
@@ -67,7 +72,7 @@ const FishSummary = () => {
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Fish</h1>
@@ -84,7 +89,7 @@ const FishDetails = () => {
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Fish Details</h1>
@@ -96,14 +101,14 @@ const FishDetails = () => {
   );
 }
 
-// Fossils
+// Bugs
 
-const Bugs = () => {
+const BugSummary = () => {
   const { id } = useParams();
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Bugs</h1>
@@ -115,16 +120,16 @@ const Bugs = () => {
   );
 }
 
-const BugInfo = () => {
+const BugDetails = () => {
   const { id } = useParams();
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>Bug Details</h1>
-        <BugInfo
+        <BugsInfo
           id={id} />
       </div>
       <Footer />
@@ -134,12 +139,12 @@ const BugInfo = () => {
 
 // SeaCreatures
 
-const SeaCreatures = () => {
+const SeaCreaturesSummary = () => {
   const { id } = useParams();
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>SeaCreatures</h1>
@@ -151,12 +156,12 @@ const SeaCreatures = () => {
   );
 }
 
-const SeaCreaturesInfo = () => {
+const SeaCreaturesDetails = () => {
   const { id } = useParams();
 
   return (
     <>
-    <Banner/>
+      <Banner />
       <NavBar />
       <div>
         <h1>SeaCreatures Details</h1>
@@ -176,6 +181,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/fish" element={<FishSummary />} />
+        <Route path="/bugs" element={<BugSummary />} />
+        <Route path="/seacreatures" element={<SeaCreaturesSummary />} />
         <Route
           path="/villager/:id"
           element={<CharactersInfoPage />}
@@ -184,8 +191,20 @@ function App() {
           path="/fish/:id"
           element={<FishDetails />}
         />
+
+        <Route
+          path="/bugs/:id"
+          element={<BugDetails />}
+        />
+
+        <Route
+          path="/seacreatures/:id"
+          element={<SeaCreaturesDetails />}
+        />
+
+
       </Routes>
-    </div>
+    </div >
   );
 }
 

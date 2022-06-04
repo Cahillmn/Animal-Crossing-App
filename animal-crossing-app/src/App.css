@@ -44,6 +44,7 @@ h1 {
   color: yellow; 
   margin-top: 2rem;
   margin-bottom: 2rem;
+  -webkit-text-stroke:1px black;
 }
 
 .info p {
@@ -59,6 +60,7 @@ img {
   margin-right:auto;
   margin-top: 1rem;
   margin-bottom:1rem;
+  background-color: aqua;
 
 }
 
@@ -87,7 +89,7 @@ button {
 }
 
 h2 {
-  color: rgb(191, 218, 242);
+  color: black;
 }
 
 p {
